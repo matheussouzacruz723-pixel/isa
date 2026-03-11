@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Psicologia Social para Isa</title>
+  <meta name="description" content="Um guia interativo de Psicologia Social">
+  <meta name="theme-color" content="#0a0a1a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast">Progresso restaurado</div>
+  <div class="review-badge">Modo Revisão Ativo</div>
+  <div class="section-dots">
+    <div class="section-dot" data-section="hero"></div>
+    <div class="section-dot" data-section="mindmap"></div>
+    <div class="section-dot" data-section="timeline"></div>
+    <div class="section-dot" data-section="comparativo"></div>
+    <div class="section-dot" data-section="durkheim"></div>
+    <div class="section-dot" data-section="levy-bruhl"></div>
+    <div class="section-dot" data-section="moscovici"></div>
+    <div class="section-dot" data-section="freud"></div>
+    <div class="section-dot" data-section="lebon"></div>
+    <div class="section-dot" data-section="contemporanea"></div>
+    <div class="section-dot" data-section="revisao"></div>
+  </div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-label">Estudos para Isa</span>
+        <h1 class="brand-title">Psicologia Social</h1>
+        <p class="brand-subtitle">Um guia interativo com resumos, exemplos, flashcards e quiz</p>
+      </div>
+      <nav class="nav-pills">
+        <a href="#comparativo" class="nav-pill">Comparativo</a>
+        <a href="#durkheim" class="nav-pill">Durkheim</a>
+        <a href="#levy-bruhl" class="nav-pill">Lévy-Bruhl</a>
+        <a href="#moscovici" class="nav-pill">Moscovici</a>
+        <a href="#freud" class="nav-pill">Freud</a>
+        <a href="#contemporanea" class="nav-pill">Contemporânea</a>
+      </nav>
+    </div>
+  </header>
+
+<nav class="study-nav">
+    <button class="study-nav-btn" onclick="scrollToSection('mindmap')">🧠 Mapa Mental</button>
+    <button class="study-nav-btn" onclick="scrollToSection('timeline')">📅 Linha do Tempo</button>
+    <button class="study-nav-btn" id="btn-revisao" onclick="toggleReviewMode()">📖 Modo Revisão</button>
+    <button class="study-nav-btn" onclick="openQuickReview()">⚡ Revisão 5 Min</button>
+    <button class="study-nav-btn" onclick="openExamMode()">📝 Modo Prova</button>
+    <button class="study-nav-btn" onclick="scrollToSection('revisao')">✅ Revisão Final</button>
+    <button class="study-nav-btn danger" onclick="resetProgress()">🗑️ Resetar</button>
+  </nav>
+
+  <main class="container">
+    <section id="mindmap" class="section">
+      <div class="card mindmap">
+        <div class="section-header">
+          <div class="section-icon">🧠</div>
+          <div>
+            <h2 class="section-title">Mapa Mental Interativo</h2>
+            <p class="section-subtitle">Clique em um autor para ir direto para a seção</p>
+          </div>
+        </div>
+        <div class="mindmap-central" onclick="scrollToSection('durkheim')">Psicologia Social</div>
+        <div class="mindmap-branches">
+          <button class="mindmap-node" onclick="scrollToSection('durkheim')">Durkheim</button>
+          <button class="mindmap-node" onclick="scrollToSection('levy-bruhl')">Lévy-Bruhl</button>
+          <button class="mindmap-node" onclick="scrollToSection('moscovici')">Moscovici</button>
+          <button class="mindmap-node" onclick="scrollToSection('freud')">Freud</button>
+          <button class="mindmap-node" onclick="scrollToSection('lebon')">Le Bon</button>
+          <button class="mindmap-node" onclick="scrollToSection('contemporanea')">Contemporânea</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="section">
+      <div class="card">
+        <div class="section-header">
+          <div class="section-icon">📅</div>
+          <div>
+            <h2 class="section-title">Linha do Tempo dos Autores</h2>
+            <p class="section-subtitle">Visão cronológica das matrizes teóricas</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item" onclick="scrollToSection('durkheim')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-name">Durkheim</div>
+              <div class="timeline-years">1858-1917</div>
+              <div class="timeline-label">Representações coletivas</div>
+            </div>
+          </div>
+          <div class="timeline-item" onclick="scrollToSection('levy-bruhl')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-name">Lévy-Bruhl</div>
+              <div class="timeline-years">1857-1939</div>
+              <div class="timeline-label">Mentalidade coletiva</div>
+            </div>
+          </div>
+          <div class="timeline-item" onclick="scrollToSection('freud')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-name">Freud</div>
+              <div class="timeline-years">1856-1939</div>
+              <div class="timeline-label">Massas e liderança</div>
+            </div>
+          </div>
+          <div class="timeline-item" onclick="scrollToSection('moscovici')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-name">Moscovici</div>
+              <div class="timeline-years">1922-2014</div>
+              <div class="timeline-label">Representações sociais</div>
+            </div>
+          </div>
+          <div class="timeline-item" onclick="scrollToSection('contemporanea')">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-name">Contemporânea</div>
+              <div class="timeline-years">Século XX-XXI</div>
+              <div class="timeline-label">Abordagens atuais</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="hero" class="hero">
+      <div class="hero-main">
+        <div class="hero-badge">✨ Guia Interativo</div>
+        <h1 class="hero-title">Estudar sem depender de slide largado.</h1>
+        <p class="hero-text">Baseado no conteúdo da aula sobre matrizes teóricas da Psicologia Social, com explicações claras, exemplos do cotidiano, flashcards e mini quizzes.</p>
+        <div class="hero-actions">
+          <a href="#comparativo" class="btn btn-primary">Ver comparativo</a>
+          <a href="#revisao" class="btn btn-secondary">Revisão final</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="step-card"><b>1.</b> Leia a ideia central de cada autor antes dedecorar nomes.</div>
+        <div class="step-card"><b>2.</b> Use os exemplos para ligar a teoria com a vida real.</div>
+        <div class="step-card"><b>3.</b> Clique nos flashcards e tente lembrar antes de abrir.</div>
+        <div class="step-card"><b>4.</b> Faça os quizzes sem chutar igual quem desistiu.</div>
+      </div>
+    </section>
+
+    <section id="comparativo" class="section">
+      <div class="card">
+        <div class="section-header">
+          <div class="section-icon">🪞</div>
+          <div>
+            <h2 class="section-title">Comparativo Rápido</h2>
+            <p class="section-subtitle">Para não misturar autor com autor</p>
+          </div>
+        </div>
+        <div class="review-grid">
+          <div class="review-card"><h3>Durkheim</h3><p><strong>Foco:</strong> Sociedade molda o indivíduo<br><strong>Palavra:</strong> Representações coletivas</p></div>
+          <div class="review-card"><h3>Lévy-Bruhl</h3><p><strong>Foco:</strong> Herança cultural<br><strong>Palavra:</strong> Mentalidade coletiva</p></div>
+          <div class="review-card"><h3>Moscovici</h3><p><strong>Foco:</strong> Sujeito e sociedade<br><strong>Palavra:</strong> Representações sociais</p></div>
+          <div class="review-card"><h3>Freud</h3><p><strong>Foco:</strong> Vínculos e massa<br><strong>Palavra:</strong> Identificação com o líder</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="durkheim" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">🏛️</div>
+        <div class="author-info"><p>Representações coletivas</p><h2>Émile Durkheim</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>Durkheim puxa o foco para a sociedade. O pensamento humano não nasce no vazio. A vida coletiva cria formas sociais de pensar e agir.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li>As <strong>representações coletivas</strong> surgem dos laços sociais entre os indivíduos.</li><li>Elas expressam conhecimento social produzido coletivamente.</li><li>Também funcionam como guia para ações sociais.</li><li>A sociedade influencia fortemente o indivíduo por meio da <strong>consciência coletiva</strong>.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>A ideia de que "quem não trabalha duro não merece nada" parece opinião pessoal, mas é uma crença coletiva criada e reforçada socialmente.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Muita coisa que você chama de "minha visão" talvez seja só a visão do meio em que vive.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Representações coletivas" data-back="Ideias, valores e formas de pensar produzidos socialmente."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Representações coletivas</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Consciência coletiva" data-back="Conjunto de crenças e sentimentos partilhados por um grupo social."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Consciência coletiva</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">Qual conceito aparece como central em Durkheim?</p><div class="quiz-options" data-answer="0" data-explanation="Durkheim trabalha com a ideia de representações coletivas como formas sociais de pensamento."><button class="quiz-option" onclick="selectQuizOption(this)">Representações coletivas</button><button class="quiz-option" onclick="selectQuizOption(this)">Inconsciente coletivo</button><button class="quiz-option" onclick="selectQuizOption(this)">Condicionamento clássico</button><button class="quiz-option" onclick="selectQuizOption(this)">Dissonância cognitiva</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="levy-bruhl" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">📚</div>
+        <div class="author-info"><p>Mentalidade coletiva e herança social</p><h2>Lucien Lévy-Bruhl</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>Lévy-Bruhl reforça que o pensamento social é transmitido, repetido e incorporado como herança simbólica.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li>Investigou as leis de funcionamento das representações coletivas.</li><li>As representações são herdadas socialmente e moldam hábitos, virtudes e crenças.</li><li>O slide destaca memória, abstração, generalização e classificação.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Crenças familiares como "homem de verdade não demonstra fraqueza" atravessam gerações como se fossem naturais.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Heranças culturais entram na cabeça antes de existir maturidade para questioná-las.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Herança social" data-back="Aquilo que o grupo transmite ao indivíduo em forma de crenças, hábitos e valores."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Herança social</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Processamento cognitivo" data-back="No slide: memória, abstração, generalização e classificação."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Processamento cognitivo</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">As representações coletivas em Lévy-Bruhl...</p><div class="quiz-options" data-answer="1" data-explanation="No material, as representações coletivas aparecem como heranças sociais."><button class="quiz-option" onclick="selectQuizOption(this)">São apenas ideias individuais</button><button class="quiz-option" onclick="selectQuizOption(this)">São heranças sociais</button><button class="quiz-option" onclick="selectQuizOption(this)">Desaparecem quando cresce</button><button class="quiz-option" onclick="selectQuizOption(this)">Valem apenas para antigas</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="moscovici" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">💬</div>
+        <div class="author-info"><p>Teoria das Representações Sociais</p><h2>Serge Moscovici</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>Moscovici aproxima a Psicologia Social da vida real. O sujeito também produz sentido junto com o coletivo.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li>A representação social ajuda o indivíduo a entender o mundo e a se comunicar.</li><li>A teoria busca compreender a construção do conhecimento de forma individual e coletiva.</li><li>Dois mecanismos importantes: <strong>objetivação</strong> e <strong>ancoragem</strong>.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático                <span class</h4>
+="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>A ideia de que terapia é "coisa de gente fraca" são representações sociais circulando.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Representações sociais não são verdades absolutas. São maneiras compartilhadas de explicar o mundo.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Objetivação" data-back="Transformar algo abstrato em algo concreto e imaginável."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Objetivação</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Ancoragem" data-back="Ligar uma ideia nova a categorias e conhecimentos já conhecidos."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Ancoragem</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">O foco de Moscovici está em...</p><div class="quiz-options" data-answer="2" data-explanation="Moscovici quer entender como o conhecimento é construído na interação."><button class="quiz-option" onclick="selectQuizOption(this)">Negar senso comum</button><button class="quiz-option" onclick="selectQuizOption(this)">Comportamentos biológicos</button><button class="quiz-option" onclick="selectQuizOption(this)">Sujeito e sociedade constroem</button><button class="quiz-option" onclick="selectQuizOption(this)">Estudar traumas</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="freud" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">👥</div>
+        <div class="author-info"><p>Psicologia das massas e análise do eu</p><h2>Sigmund Freud</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>Freud mostra que a massa não funciona só pela razão. Ela funciona por vínculo afetivo, identificação e desejo de proteção.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li>A personalidade se constrói na vida social, especialmente na família.</li><li>Nos grupos, os indivíduos tendem a se identificar com uma figura central: o <strong>líder</strong>.</li><li>O líder pode funcionar como <strong>ideal do ego</strong>.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Fandoms, torcidas, grupos políticos podem girar em torno de uma figura central.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Freud ajuda a entender por que pessoas racionais, em grupo, às vezes parecem ter alugado o cérebro.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Ideal do ego" data-back="Imagem de referência que o indivíduo toma como modelo."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Ideal do ego</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Identificação grupal" data-back="Ligação psíquica entre os membros de um grupo e sua liderança."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Identificação grupal</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">Uma massa se organiza porque...</p><div class="quiz-options" data-answer="1" data-explanation="O líder vira referência central com identificação."><button class="quiz-option" onclick="selectQuizOption(this)">Rejeita liderança</button><button class="quiz-option" onclick="selectQuizOption(this)">Se identifica com líder</button><button class="quiz-option" onclick="selectQuizOption(this)">Elimina afeto</button><button class="quiz-option" onclick="selectQuizOption(this)">Aumenta autonomia</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="lebon" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">⚡</div>
+        <div class="author-info"><p>Multidão, irracionalidade e instintos</p><h2>Le Bon e McDougall</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>Le Bon puxa a ideia de multidão perigosa e emocional. McDougall puxa a força dos instintos.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li>Le Bon caracteriza multidões pela <strong>violência, irracionalidade, sugestionabilidade</strong> e <strong>contágio</strong>.</li><li>Ele opõe mente individual racional à mente grupal selvagem.</li><li>McDougall defendia que o comportamento humano poderia ser explicado pelos <strong>instintos</strong>.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Em pânico coletivo, o comportamento parece se espalhar como vírus emocional.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Esses autores ajudam a entender fenômenos de massa, mas exageram quando tratam grupo como monstro irracional.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Contágio" data-back="Espalhamento rápido de emoções e comportamentos no grupo."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Contágio</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Instintos" data-back="Forças mentais inatas que explicariam o comportamento humano."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Instintos</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">Le Bon associa a multidão a...</p><div class="quiz-options" data-answer="0" data-explanation="Le Bon descreve a multidão como violenta e irracional."><button class="quiz-option" onclick="selectQuizOption(this)">Violência e irracionalidade</button><button class="quiz-option" onclick="selectQuizOption(this)">Autonomia reflexiva</button><button class="quiz-option" onclick="selectQuizOption(this)">Planejamento estável</button><button class="quiz-option" onclick="selectQuizOption(this)">Neutralidade</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contemporanea" class="section author-section">
+      <div class="author-header">
+        <div class="author-icon">🌍</div>
+        <div class="author-info"><p>Linhas atuais e leitura crítica</p><h2>Psicologia Social Contemporânea</h2></div>
+      </div>
+      <div class="author-body">
+        <div class="content-card">
+          <div class="content-card-inner">
+            <h3>Ideia Central</h3>
+            <p>A Psicologia Social contemporânea não fica só discutindo massas e conceitos clássicos. Ela também olha para linguagem, vínculos, opressão, comunicação, mal-estar e transformação social.</p>
+          </div>
+          <div class="accordion accordion-hide">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Pontos Principais</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><ul class="point-list"><li><strong>Psicologia social sociológica:</strong> compreende fenômenos a partir da experiência social vivida.</li><li><strong>Psicologia social psicológica:</strong> analisa os modos de ser do indivíduo em relação aos outros.</li><li><strong>Psicologia social crítica:</strong> forte na América Latina, ligada à opressão e mudança social.</li></ul></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Exemplo Prático</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>Redes sociais ampliam comunicação, mas também intensificam comparação, ansiedade, polarização.</p></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Leitura Crítica</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><p>A linha crítica quer entender de onde vem o sofrimento social e como enfrentá-lo.</p></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="content-card">
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Flashcards</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner"><div class="flashcard-grid"><button class="flashcard" onclick="flipCard(this)" data-front="Psicologia social sociológica" data-back="Foca grupos, participação social e impacto dos fenômenos coletivos."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Psicologia social sociológica</div></button><button class="flashcard" onclick="flipCard(this)" data-front="Psicologia social crítica" data-back="Analisa opressão e busca transformação social."><div class="flashcard-meta">Pergunta</div><div class="flashcard-content">Psicologia social crítica</div></button></div></div></div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header" onclick="toggleAccordion(this)">
+                <h4>Mini Quiz</h4>
+                <span class="accordion-toggle"><span class="accordion-icon">▼</span></span>
+              </div>
+              <div class="accordion-content"><div class="accordion-inner quiz-card"><p class="quiz-question">Qual linha enfatiza opressão e transformação social?</p><div class="quiz-options" data-answer="0" data-explanation="A psicologia social crítica aparece ligada à América Latina e à opressão."><button class="quiz-option" onclick="selectQuizOption(this)">Psicologia social crítica</button><button class="quiz-option" onclick="selectQuizOption(this)">Psicologia biológica</button><button class="quiz-option" onclick="selectQuizOption(this)">Psicologia diferencial</button><button class="quiz-option" onclick="selectQuizOption(this)">Psicanálise clássica</button></div><div class="quiz-result"></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="revisao" class="section">
+      <div class="card">
+        <div class="section-header">
+          <div class="section-icon">📝</div>
+          <div>
+            <h2 class="section-title">Revisão Final</h2>
+            <p class="section-subtitle">A parte que salva quando o cérebro entrou em greve</p>
+          </div>
+        </div>
+        <div class="review-grid">
+          <div class="review-card"><h3>Durkheim</h3><p>Sociedade molda o pensamento por meio das representações coletivas e da consciência coletiva.</p></div>
+          <div class="review-card"><h3>Lévy-Bruhl</h3><p>O grupo transmite heranças simbólicas que moldam crenças, hábitos e formas de classificar a realidade.</p></div>
+          <div class="review-card"><h3>Moscovici</h3><p>As representações sociais ajudam sujeito e grupo a compreender, comunicar e organizar o mundo.</p></div>
+          <div class="review-card"><h3>Freud</h3><p>Massas funcionam por identificação com o líder e pelos vínculos entre os membros.</p></div>
+          <div class="review-card"><h3>Le Bon</h3><p>A multidão tende à irracionalidade, à sugestionabilidade e ao contágio emocional.</p></div>
+          <div class="review-card"><h3>Contemporânea</h3><p>A Psicologia Social atual também estuda comunicação, mal-estar, opressão e transformação social.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer"><p>Feito para estudo. Bonito, organizado e funcional.</p></footer>
+  </main>
+
+  <div id="exam-modal" class="exam-modal">
+    <div class="exam-container">
+      <div class="exam-header">
+        <div class="exam-progress" id="exam-progress">Pergunta 1 de 15</div>
+        <button class="exam-close" onclick="closeExamMode()">×</button>
+      </div>
+      <div id="exam-content"></div>
+      <div class="exam-actions" id="exam-actions">
+        <button class="exam-btn exam-btn-primary" onclick="nextExamQuestion()">Próxima</button>
+        <button class="exam-btn exam-btn-secondary" onclick="restartExam()">Reiniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
